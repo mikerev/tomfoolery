@@ -20,12 +20,17 @@ while 1:
     text=irc.recv(2040)  
     print text   
 
+    reply = random.choice(quotes.qdb)
+
     if text.find('PING') != -1:                          
        irc.send('PONG ' + text.split() [1] + '\r\n')
 
     if text.find(':trump') !=-1: 
-        t = text.split(':trump') 
-        to = t[1].strip() 
-        reply = random.choice(quotes.qdb)
+        t = text.split(':trump')
+        to = t[1].strip()
         sleep(1)
         irc.send('PRIVMSG '+chan+' :'+reply+' \r\n')
+
+    sleep(10800)
+    #sleep(10) 
+    irc.send('PRIVMSG '+chan+' :'+reply+' \r\n')
